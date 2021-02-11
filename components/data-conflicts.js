@@ -99,6 +99,11 @@ class DataConflicts extends LitElement {
         <table>
           <tr>
             <td valign="top">
+              ${this.ready ? html`
+                <div class="no-matches">
+                  ${this.matches.length} ${this.matches.length === 1 ? `match` : `matches`} found.
+                </div>
+              `:``}
               ${this.matches.length > 0 ? html`
                 <table class="matches">
                   <tr class="header">
@@ -112,11 +117,6 @@ class DataConflicts extends LitElement {
                     </tr>
                   `)}
                 </table>
-              `: ``}
-              ${this.ready && this.matches.length === 0 ? html`
-                <div class="no-matches">
-                  No matches.
-                </div>
               `: ``}
             </td>
             <td class="selection">
